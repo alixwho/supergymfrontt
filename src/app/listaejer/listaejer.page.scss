@@ -1,0 +1,26 @@
+ion-card {
+    border-radius: 16px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    margin-bottom: 12px;
+}
+
+ion-card-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h2 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+    }
+
+    p {
+    font-size: 0.85rem;
+    color: gray;
+    }
+
+    ion-button {
+    --border-radius: 12px;
+    }
+}

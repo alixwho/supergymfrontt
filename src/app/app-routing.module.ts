@@ -11,6 +11,22 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'graf',
+    loadChildren: () => import('./graf/graf.module').then( m => m.GrafPageModule)
+  },
+  {
+    path: 'listaejer',
+    loadChildren: () => import('./listaejer/listaejer.module').then( m => m.ListaejerPageModule)
+  },
+  {
+    path: 'detallejer',
+    loadChildren: () => import('./detallejer/detallejer.module').then( m => m.DetallejerPageModule)
+  },
+  {
+    path: 'terminarejer',
+    loadChildren: () => import('./terminarejer/terminarejer.module').then( m => m.TerminarejerPageModule)
+  },
 ];
 
 @NgModule({
