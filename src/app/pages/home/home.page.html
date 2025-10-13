@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>
+      ¡Hola, Raam!
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-avatar>
+        <img src="assets/bemto.JPG" alt="avatar">
+      </ion-avatar>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <!-- Progreso diario -->
+  <ion-card class="progress-card">
+    <ion-card-header>
+      <ion-card-title>Progreso de hoy</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div class="progress-circle">
+        <ion-progress-bar value="0.75" color="success"></ion-progress-bar>
+        <div class="progress-text">
+          <h2>75%</h2>
+          <p>Objetivo diario</p>
+        </div>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Estadísticas -->
+  <div class="stats-section">
+    <h3>Estadísticas</h3>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6">
+          <ion-card class="stat-card">
+            <ion-icon name="flame-outline"></ion-icon>
+            <h4>320</h4>
+            <p>Calorías</p>
+          </ion-card>
+        </ion-col>
+        <ion-col size="6">
+          <ion-card class="stat-card">
+            <ion-icon name="time-outline"></ion-icon>
+            <h4>45</h4>
+            <p>Minutos</p>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="6">
+          <ion-card class="stat-card">
+            <ion-icon name="calendar-outline"></ion-icon>
+            <h4>7</h4>
+            <p>Racha días</p>
+          </ion-card>
+        </ion-col>
+        <ion-col size="6">
+          <ion-card class="stat-card">
+            <ion-icon name="barbell-outline"></ion-icon>
+            <h4>12</h4>
+            <p>Ejercicios</p>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <!-- Botón inferior -->
+  <ion-button expand="block" class="start-btn" color="primary">
+    <ion-icon name="play-outline" slot="start"></ion-icon>
+    Iniciar rutina de hoy
+  </ion-button>
+
+</ion-content>

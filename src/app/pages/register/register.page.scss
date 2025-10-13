@@ -1,0 +1,35 @@
+ion-toolbar {
+    --background: #ffffff;
+    --color: #000;
+    font-weight: 600;
+    font-size: 18px;
+  }
+  
+  ion-content {
+    --background: #fff;
+  }
+  
+  ion-item {
+    --highlight-color-focused: #1a73e8;
+    border-radius: 8px;
+    margin-bottom: 12px;
+  }
+  
+  .peso-altura {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  
+  .peso-altura ion-item {
+    flex: 1;
+  }
+  
+  .register-btn {
+    --background: #2ecc71;
+    --background-activated: #27ae60;
+    margin-top: 16px;
+    border-radius: 10px;
+    font-weight: 600;
+  }
+  

@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/login"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Crear cuenta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <form (ngSubmit)="register()">
+
+    <ion-item>
+      <ion-label position="floating">Nombre completo</ion-label>
+      <ion-input [(ngModel)]="nombre" name="nombre" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Edad</ion-label>
+      <ion-input type="number" [(ngModel)]="edad" name="edad" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Género</ion-label>
+      <ion-select [(ngModel)]="genero" name="genero" placeholder="Seleccionar">
+        <ion-select-option value="masculino">Masculino</ion-select-option>
+        <ion-select-option value="femenino">Femenino</ion-select-option>
+        <ion-select-option value="otro">Otro</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <div class="peso-altura">
+      <ion-item>
+        <ion-label position="floating">Peso (kg)</ion-label>
+        <ion-input type="number" [(ngModel)]="peso" name="peso"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Altura (cm)</ion-label>
+        <ion-input type="number" [(ngModel)]="altura" name="altura"></ion-input>
+      </ion-item>
+    </div>
+
+    <ion-item>
+      <ion-label>Nivel de conocimiento</ion-label>
+      <ion-select [(ngModel)]="nivel" name="nivel" placeholder="Seleccionar">
+        <ion-select-option value="principiante">Principiante</ion-select-option>
+        <ion-select-option value="intermedio">Intermedio</ion-select-option>
+        <ion-select-option value="avanzado">Avanzado</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-button expand="block" class="register-btn" type="submit">
+      Registrarse
+    </ion-button>
+
+  </form>
+
+</ion-content>
