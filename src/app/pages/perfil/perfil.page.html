@@ -1,0 +1,69 @@
+<ion-header translucent="true" class="perfil-header">
+  <ion-toolbar class="center-title">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title >Mi Perfil</ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon name="ellipsis-vertical"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <div class="hero">
+    <div class="page-wrap">
+      <div class="avatar-wrap">
+        <img src="assets/avatar.jpg" alt="avatar" />
+      </div>
+
+      <ion-card class="stats-card">
+        <ion-card-content>
+          <div class="stats-grid">
+            <div class="stat"><div class="stat-num pro">75</div><div class="stat-label">kg</div></div>
+            <div class="stat"><div class="stat-num pro">180</div><div class="stat-label">Altura</div></div>
+            <div class="stat"><div class="stat-num pro">Pro</div><div class="stat-label">Nivel</div></div>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
+</ion-header>
+
+<ion-content fullscreen="true" class="perfil-content">
+  <div class="page-wrap">
+    <!-- Progreso Mensual -->
+    <ion-card class="panel">
+      <ion-card-header>
+        <ion-card-title>Progreso Mensual</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <div class="chart-box">
+          <canvas #progressChart></canvas>
+        </div>
+        <div class="chart-weeks">
+          <span>Sem 1</span><span>Sem 2</span><span>Sem 3</span><span>Sem 4</span>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Rutinas -->
+    <ion-card class="panel">
+      <ion-card-header>
+        <ion-card-title>Rutinas Completadas</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list lines="none" class="routine-list">
+          <ion-item><div class="dot ok"></div><ion-label><h3>Entrenamiento de Fuerza</h3></ion-label><div class="right-time">Hoy</div></ion-item>
+          <ion-item><div class="dot ok"></div><ion-label><h3>Cardio Intenso</h3></ion-label><div class="right-time">Ayer</div></ion-item>
+          <ion-item><div class="dot ok"></div><ion-label><h3>Yoga Matutino</h3></ion-label><div class="right-time">2 días</div></ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+
+    <div class="btn-wrap">
+      <ion-button expand="block" class="btn-editar" (click)="onEditarPerfil()">Editar Perfil</ion-button>
+    </div>
+    <div style="height:12px"></div>
+  </div>
+</ion-content>
