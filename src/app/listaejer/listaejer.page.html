@@ -4,73 +4,108 @@
       <ion-back-button defaultHref="/home"></ion-back-button>
     </ion-buttons>
     <ion-title>Ejercicios</ion-title>
-
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
 
-  <ion-segment [(ngModel)]="parteSeleccionada" mode="md">
-    <ion-segment-button value="hombro">
-      <ion-label>Hombro</ion-label>
-    </ion-segment-button>
-    <ion-segment-button value="pecho">
-      <ion-label>Pecho</ion-label>
-    </ion-segment-button>
-    <ion-segment-button value="piernas">
-      <ion-label>Piernas</ion-label>
-    </ion-segment-button>
-  </ion-segment>
+<div class="card card-5">
+  <img src="assets/cardlun.jpg" alt="Fondo borroso" class="card__bg" />
 
-  <div [ngSwitch]="parteSeleccionada">
-
-    <!-- Hombro -->
-    <ion-list *ngSwitchCase="'hombro'">
-      <ion-card *ngFor="let ejercicio of ejerciciosHombro">
-        <ion-card-content class="flex justify-between items-center">
-          <div>
-            <h2>{{ ejercicio.nombre }}</h2>
-            <p>{{ ejercicio.series }} series • {{ ejercicio.reps }} reps</p>
-          </div>
-          <ion-button fill="solid" color="primary" (click)="verVideo(ejercicio)">
-            <ion-icon name="play-outline" slot="start"></ion-icon>
-            Ver video
-          </ion-button>
-        </ion-card-content>
-      </ion-card>
-    </ion-list>
-
-    <!-- Pecho -->
-    <ion-list *ngSwitchCase="'pecho'">
-      <ion-card *ngFor="let ejercicio of ejerciciosPecho">
-        <ion-card-content class="flex justify-between items-center">
-          <div>
-            <h2>{{ ejercicio.nombre }}</h2>
-            <p>{{ ejercicio.series }} series • {{ ejercicio.reps }} reps</p>
-          </div>
-          <ion-button fill="solid" color="primary" (click)="verVideo(ejercicio)">
-            <ion-icon name="play-outline" slot="start"></ion-icon>
-            Ver video
-          </ion-button>
-        </ion-card-content>
-      </ion-card>
-    </ion-list>
-
-    <!-- Piernas -->
-    <ion-list *ngSwitchCase="'piernas'">
-      <ion-card *ngFor="let ejercicio of ejerciciosPiernas">
-        <ion-card-content class="flex justify-between items-center">
-          <div>
-            <h2>{{ ejercicio.nombre }}</h2>
-            <p>{{ ejercicio.series }} series • {{ ejercicio.reps }} reps</p>
-          </div>
-          <ion-button fill="solid" color="primary" (click)="verVideo(ejercicio)">
-            <ion-icon name="play-outline" slot="start"></ion-icon>
-            Ver video
-          </ion-button>
-        </ion-card-content>
-      </ion-card>
-    </ion-list>
-
+  <div class="card__content">
+    <p class="card__exit"></p>
+    <div class="text">
+      <strong>Rutina de día lunes</strong>
+    </div><br>
+    <p class="card__apply">
+      <a class="card__link" >Empezar rutina<i class="fas fa-arrow-right"></i></a>
+    </p>
   </div>
+</div>
+
+<div class="card card-5">
+  <img src="assets/cardmar.jpg" alt="Fondo borroso" class="card__bg" />
+
+  <div class="card__content">
+    <p class="card__exit"></p>
+    <div class="text">
+      <strong>Rutina de día martes</strong>
+    </div><br>
+    <p class="card__apply">
+      <a class="card__link" >Empezar rutina<i class="fas fa-arrow-right"></i></a>
+    </p>
+  </div>
+</div>
+
+<div class="card card-5">
+  <img src="assets/cardmier.jpg" alt="Fondo borroso" class="card__bg" />
+
+  <div class="card__content">
+    <p class="card__exit"></p>
+    <div class="text">
+      <strong>Rutina de día miercoles</strong>
+    </div><br>
+    <p class="card__apply">
+      <a class="card__link" >Empezar rutina<i class="fas fa-arrow-right"></i></a>
+    </p>
+  </div>
+</div>
+
+<div class="card card-5">
+  <img src="assets/cardlun.jpg" alt="Fondo borroso" class="card__bg" />
+
+  <div class="card__content">
+    <p class="card__exit"></p>
+    <div class="text">
+      <strong>Rutina de día jueves</strong>
+    </div><br>
+    <p class="card__apply">
+      <a class="card__link" >Empezar rutina<i class="fas fa-arrow-right"></i></a>
+    </p>
+  </div>
+</div>
+
+<div class="card card-5">
+  <img src="assets/cardmar.jpg" alt="Fondo borroso" class="card__bg" />
+
+  <div class="card__content">
+    <p class="card__exit"></p>
+    <div class="text">
+      <strong>Rutina de día viernes</strong>
+    </div><br>
+    <p class="card__apply">
+      <a class="card__link" >Empezar rutina<i class="fas fa-arrow-right"></i></a>
+    </p>
+  </div>
+</div>
+
+<div class="card card-5">
+  <img src="assets/cardmier.jpg" alt="Fondo borroso" class="card__bg" />
+
+  <div class="card__content">
+    <p class="card__exit"></p>
+    <div class="text">
+      <strong>Rutina de día sábado</strong>
+    </div><br>
+    <p class="card__apply">
+      <a class="card__link" >Empezar rutina<i class="fas fa-arrow-right"></i></a>
+    </p>
+  </div>
+</div>
+
+
+<div class="card card-5">
+  <img src="assets/cardlun.jpg" alt="Fondo borroso" class="card__bg" />
+
+  <div class="card__content">
+    <p class="card__exit"></p>
+    <div class="text">
+      <strong>Rutina de día domingo</strong>
+    </div><br>
+    <p class="card__apply">
+      <a class="card__link" >Empezar rutina<i class="fas fa-arrow-right"></i></a>
+    </p>
+  </div>
+</div>
+
 </ion-content>
