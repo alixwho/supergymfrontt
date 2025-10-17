@@ -1,38 +1,43 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-recover-password',
-  standalone:false,
+  standalone: false,
   templateUrl: './recover-password.page.html',
   styleUrls: ['./recover-password.page.scss'],
 })
 export class RecoverPasswordPage {
-  email = '';
+  recoverForm: FormGroup;
 
   constructor(
+    private fb: FormBuilder,
     private router: Router,
     private alertCtrl: AlertController
-  ) {}
+  ) {
+    this.recoverForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]]
+    });
+  }
 
-  async sendRecoveryCode() {
-    if (!this.email) {
-      const alert = await this.alertCtrl.create({
-        header: 'Error',
-        message: 'Por favor, ingresa tu correo electrónico.',
-        buttons: ['Aceptar']
-      });
-      await alert.present();
+  get email() {
+    return this.recoverForm.get('email')!;
+  }
+
+  async enviarCodigoRecuperacion() {
+    if (this.recoverForm.invalid) {
+      this.recoverForm.markAllAsTouched();
       return;
     }
 
-    console.log('Correo ingresado:', this.email);
+    const correo = this.email.value;
+    console.log('Correo ingresado:', correo);
 
-    // 🔹 Aquí más adelante se conectará con Laravel para enviar el código
     const alert = await this.alertCtrl.create({
       header: 'Código enviado',
-      message: 'Hemos enviado un código de recuperación a tu correo.',
+      message: `Hemos enviado un código de recuperación a ${correo}.`,
       buttons: ['Aceptar']
     });
     await alert.present();

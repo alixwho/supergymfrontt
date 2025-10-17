@@ -9,21 +9,68 @@
 
 <ion-content class="ion-padding">
 
-  <form (ngSubmit)="register()">
+  <form [formGroup]="formRegistro" (ngSubmit)="registrar()">
 
     <ion-item>
       <ion-label position="floating">Nombre completo</ion-label>
-      <ion-input [(ngModel)]="nombre" name="nombre" required></ion-input>
+      <ion-input formControlName="nombre"></ion-input>
     </ion-item>
+    @if (formRegistro.get('nombre')?.invalid && formRegistro.get('nombre')?.touched) {
+      <ion-text color="danger">El nombre es obligatorio</ion-text>
+    }
+
+    <ion-item>
+      <ion-label position="floating">Correo electrónico</ion-label>
+      <ion-input type="email" formControlName="correo"></ion-input>
+    </ion-item>
+    @if (formRegistro.get('correo')?.invalid && formRegistro.get('correo')?.touched) {
+      <ion-text color="danger">Ingresa un correo válido</ion-text>
+    }
+
+    <!-- Aquí agregué lo del ojo para que el usuario vea de que escribe y tambien para ver si coinciden las contraseñas -->
+    <ion-item>
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input
+        [type]="mostrarContrasena ? 'text' : 'password'"
+        formControlName="contrasena">
+      </ion-input>
+      <ion-icon
+        [name]="mostrarContrasena ? 'eye-off-outline' : 'eye-outline'"
+        slot="end"
+        (click)="cambiarVisibilidadContrasena()"
+        class="icono-ojo">
+      </ion-icon>
+    </ion-item>
+    @if (formRegistro.get('contrasena')?.invalid && formRegistro.get('contrasena')?.touched) {
+      <ion-text color="danger">La contraseña debe tener al menos 6 caracteres</ion-text>
+    }
+
+    <!-- Confirmar contra -->
+    <ion-item>
+      <ion-label position="floating">Confirmar contraseña</ion-label>
+      <ion-input
+        [type]="mostrarConfirmar ? 'text' : 'password'"
+        formControlName="confirmarContrasena">
+      </ion-input>
+      <ion-icon
+        [name]="mostrarConfirmar ? 'eye-off-outline' : 'eye-outline'"
+        slot="end"
+        (click)="cambiarVisibilidadConfirmacion()"
+        class="icono-ojo">
+      </ion-icon>
+    </ion-item>
+    @if (formRegistro.hasError('noCoinciden') && formRegistro.get('confirmarContrasena')?.touched) {
+      <ion-text color="danger">Las contraseñas no coinciden</ion-text>
+    }
 
     <ion-item>
       <ion-label position="floating">Edad</ion-label>
-      <ion-input type="number" [(ngModel)]="edad" name="edad" required></ion-input>
+      <ion-input type="number" formControlName="edad"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label>Género</ion-label>
-      <ion-select [(ngModel)]="genero" name="genero" placeholder="Seleccionar">
+      <ion-select formControlName="genero" placeholder="Seleccionar">
         <ion-select-option value="masculino">Masculino</ion-select-option>
         <ion-select-option value="femenino">Femenino</ion-select-option>
         <ion-select-option value="otro">Otro</ion-select-option>
@@ -33,25 +80,25 @@
     <div class="peso-altura">
       <ion-item>
         <ion-label position="floating">Peso (kg)</ion-label>
-        <ion-input type="number" [(ngModel)]="peso" name="peso"></ion-input>
+        <ion-input type="number" formControlName="peso"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label position="floating">Altura (cm)</ion-label>
-        <ion-input type="number" [(ngModel)]="altura" name="altura"></ion-input>
+        <ion-input type="number" formControlName="altura"></ion-input>
       </ion-item>
     </div>
 
     <ion-item>
       <ion-label>Nivel de conocimiento</ion-label>
-      <ion-select [(ngModel)]="nivel" name="nivel" placeholder="Seleccionar">
+      <ion-select formControlName="nivel" placeholder="Seleccionar">
         <ion-select-option value="principiante">Principiante</ion-select-option>
         <ion-select-option value="intermedio">Intermedio</ion-select-option>
         <ion-select-option value="avanzado">Avanzado</ion-select-option>
       </ion-select>
     </ion-item>
 
-    <ion-button expand="block" class="register-btn" type="submit">
+    <ion-button expand="block" class="register-btn" type="submit" [disabled]="formRegistro.invalid">
       Registrarse
     </ion-button>
 

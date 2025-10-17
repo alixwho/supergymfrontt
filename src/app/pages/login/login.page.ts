@@ -1,16 +1,44 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
-  standalone: false,
+  standalone:false,
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage implements OnInit {
+export class LoginPage {
+  loginForm: FormGroup;
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(private fb: FormBuilder, private router: Router) {
+    this.loginForm = this.fb.group({
+      correo: ['', [Validators.required, Validators.email]],
+      contrasena: ['', [Validators.required, Validators.minLength(6)]],
+    });
+  }
+  get correo() {
+    return this.loginForm.get('correo')!;
   }
 
+  get contrasena() {
+    return this.loginForm.get('contrasena')!;
+  }
+
+  ingresar() {
+    if (this.loginForm.valid) {
+      localStorage.setItem('usuario', this.loginForm.value.correo);
+      this.router.navigate(['/home']);
+    } else {
+      this.loginForm.markAllAsTouched();
+    }
+  }
+
+  irARegistro() {
+    this.router.navigate(['/register']);
+  }
+
+  irARecuperar() {
+    this.router.navigate(['/recover-password']);
+  }
 }
