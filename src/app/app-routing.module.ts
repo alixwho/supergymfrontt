@@ -18,6 +18,10 @@ const routes: Routes = [
     path: 'retos',
     loadChildren: () => import('./pages/retos/retos.module').then( m => m.RetosPageModule)
   },
+  {
+    path: 'notificaciones',
+    loadChildren: () => import('./pages/notificaciones/notificaciones.module').then( m => m.NotificacionesPageModule)
+  },
 
 ];
 
