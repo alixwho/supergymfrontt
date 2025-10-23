@@ -14,6 +14,10 @@ const routes: Routes = [
     path: 'perfil',
     loadChildren: () => import('./pages/perfil/perfil.module').then( m => m.PerfilPageModule)
   },
+  {
+    path: 'retos',
+    loadChildren: () => import('./pages/retos/retos.module').then( m => m.RetosPageModule)
+  },
 
 ];
 

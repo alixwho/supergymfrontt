@@ -1,0 +1,88 @@
+<ion-header translucent="true">
+  <ion-toolbar class="retos-toolbar center-title">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Retos Activos</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon name="trophy-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="retos-content">
+  <div class="page-wrap">
+    <!-- Tarjeta Reto 30 Días -->
+    <ion-card class="reto-card">
+      <ion-card-content>
+        <div class="reto-header">
+          <h2>Reto 30 Días</h2>
+          <span class="chip">Día {{currentDay}}/{{totalDays}}</span>
+        </div>
+        <p class="reto-desc">Ejercítate todos los días durante 30 días consecutivos</p>
+
+        <div class="progress">
+          <div class="bar" [style.width.%]="progressPercent"></div>
+        </div>
+        <div class="progress-text">{{progressPercent}}% completado</div>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Progreso del Mes -->
+    <ion-card class="panel">
+      <ion-card-header>
+        <ion-card-title>Progreso del Mes</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <div class="weekdays">
+          <span *ngFor="let d of weekdays">{{ d }}</span>
+        </div>
+
+        <!-- Fila 1 -->
+        <div class="dots-row">
+          <div *ngFor="let ok of row1" class="dot" [class.ok]="ok" [class.bad]="!ok">
+            <ion-icon *ngIf="ok" name="checkmark"></ion-icon>
+            <ion-icon *ngIf="!ok" name="close"></ion-icon>
+          </div>
+        </div>
+
+        <!-- Fila 2 -->
+        <div class="dots-row">
+          <div *ngFor="let ok of row2" class="dot" [class.ok]="ok" [class.bad]="!ok">
+            <ion-icon *ngIf="ok" name="checkmark"></ion-icon>
+            <ion-icon *ngIf="!ok" name="close"></ion-icon>
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Stats: Días completados / perdidos -->
+    <div class="stats-grid">
+      <ion-card class="stat-card done">
+        <ion-card-content>
+          <div class="stat-num">{{ diasCompletados }}</div>
+          <div class="stat-label">Días Completados</div>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card class="stat-card lost">
+        <ion-card-content>
+          <div class="stat-num">{{ diasPerdidos }}</div>
+          <div class="stat-label">Días Perdidos</div>
+        </ion-card-content>
+      </ion-card>
+    </div>
+
+    <!-- Mensaje motivación -->
+    <div class="motivation">
+      <div class="title">¡Sigue así!</div>
+      <div class="subtitle">Solo faltan {{ totalDays - currentDay }} días para completar el reto</div>
+    </div>
+
+    <div style="height:16px"></div>
+  </div>
+</ion-content>
