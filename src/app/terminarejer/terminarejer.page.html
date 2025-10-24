@@ -1,13 +1,24 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>terminarejer</ion-title>
+    <ion-title>{{ ejercicio.nombre }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">terminarejer</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
+  <p>{{ ejercicio.descripcion }}</p>
+  <p>Repeticiones/Cuentas: {{ ejercicio.repeticiones }}</p>
+
+  <!-- Video o GIF -->
+  <ng-container *ngIf="ejercicio.video">
+    <video *ngIf="ejercicio.video.endsWith('.mp4')" width="100%" controls>
+      <source [src]="ejercicio.video" type="video/mp4">
+    </video>
+    <img *ngIf="ejercicio.video.endsWith('.gif')" [src]="ejercicio.video" width="100%">
+  </ng-container>
+
+  <!-- Toggle switch personalizado -->
+  <label class="switch">
+    <input type="checkbox" [checked]="ejercicio.completado" (change)="toggleCompletado()">
+    <span class="slider"></span>
+  </label>
 </ion-content>
