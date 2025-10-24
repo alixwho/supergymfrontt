@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>
+Super Gym
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-avatar>
+        <img src="assets/bemto.JPG" alt="avatar">
+      </ion-avatar>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="ion-padding">
+  <div class="section-title">
+    <h2>¡Sigue así!</h2>
+    <p>Has completado 5 de 7 entrenamientos esta semana</p>
+  </div>
+
+  <canvas id="graficaSemanal"></canvas>
+
+  <div class="resumen">
+    <ion-card class="success">
+      <ion-card-content>
+        <h3>5</h3>
+        <p>Completado</p>
+      </ion-card-content>
+    </ion-card>
+  
+    <ion-card class="warning">
+      <ion-card-content>
+        <h3>1</h3>
+        <p>En progreso</p>
+      </ion-card-content>
+    </ion-card>
+  
+    <ion-card class="danger">
+      <ion-card-content>
+        <h3>1</h3>
+        <p>Fallidos</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+  
+  <div class="racha">
+    <ion-card>
+      <ion-card-content>
+        <ion-icon name="flame-outline"></ion-icon>
+        <div>
+          <h4>¡Racha de 3 días!</h4>
+          <p>¡Mantén el momentum!</p>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+  
+</ion-content>

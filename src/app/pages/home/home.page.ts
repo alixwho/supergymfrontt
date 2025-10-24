@@ -14,4 +14,9 @@ export class HomePage {
     localStorage.removeItem('usuario'); 
     this.router.navigate(['/login']);   
   }
+
+  irAProgresoSemanal() {
+ 
+    this.router.navigate(['/progreso-semanal']);
+  }
 }

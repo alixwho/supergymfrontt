@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AccesoGuard } from './guards/acceso-guard';
 import { InicioGuard } from './guards/inicio-guard';
-
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
 
@@ -25,6 +24,10 @@ const routes: Routes = [
     path: 'home',
     loadChildren: () => import('./pages/home/home.module').then(m => m.HomePageModule),
     canActivate: [InicioGuard]
+  },
+  {
+    path: 'progreso-semanal',
+    loadChildren: () => import('./pages/progreso-semanal/progreso-semanal.module').then(m => m.ProgresoSemanalPageModule)
   },
   { path: '**', redirectTo: 'login' }
 ];

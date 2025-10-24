@@ -13,7 +13,10 @@ export class LoginPage {
 
   constructor(private fb: FormBuilder, private router: Router) {
     this.loginForm = this.fb.group({
-      correo: ['', [Validators.required, Validators.email]],
+      correo: ['', [
+        Validators.required,
+        Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)
+      ]],
       contrasena: ['', [Validators.required, Validators.minLength(6)]],
     });
   }

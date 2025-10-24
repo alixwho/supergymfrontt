@@ -4,19 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { HomePageRoutingModule } from './home-routing.module';
+import { ProgresoSemanalPageRoutingModule } from './progreso-semanal-routing.module';
 
-import { HomePage } from './home.page';
-import { RouterModule } from '@angular/router';
+import { ProgresoSemanalPage } from './progreso-semanal.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    HomePageRoutingModule,
-    RouterModule
+    ProgresoSemanalPageRoutingModule
   ],
-  declarations: [HomePage]
+  declarations: [ProgresoSemanalPage]
 })
-export class HomePageModule {}
+export class ProgresoSemanalPageModule {}
