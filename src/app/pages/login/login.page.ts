@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -10,31 +12,61 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginPage {
   loginForm: FormGroup;
+  cargando = false;
+  mensajeError = '';
+  mostrarPassword = false;
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private authService: AuthService,
+    private navCtrl: NavController
+  ) {
     this.loginForm = this.fb.group({
-      correo: ['', [
-        Validators.required,
-        Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)
-      ]],
-      contrasena: ['', [Validators.required, Validators.minLength(6)]],
+      numero_usuario: ['', [Validators.required]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
     });
   }
-  get correo() {
-    return this.loginForm.get('correo')!;
+
+  get numero_usuario() {
+    return this.loginForm.get('numero_usuario')!;
   }
 
-  get contrasena() {
-    return this.loginForm.get('contrasena')!;
+  get password() {
+    return this.loginForm.get('password')!;
   }
 
   ingresar() {
-    if (this.loginForm.valid) {
-      localStorage.setItem('usuario', this.loginForm.value.correo);
-      this.router.navigate(['/home']);
-    } else {
+    if (this.loginForm.invalid) {
       this.loginForm.markAllAsTouched();
+      return;
     }
+
+    this.cargando = true;
+    this.mensajeError = '';
+
+    const { numero_usuario, password } = this.loginForm.value;
+    console.log('Enviando datos de login:', this.loginForm.value);
+
+    this.authService.login(numero_usuario, password).subscribe({
+      next: (res) => {
+        console.log('Login exitoso:', res);
+
+
+        this.authService.saveSession(res.token, res.user);
+
+        this.cargando = false;
+        this.navCtrl.navigateRoot('/home'); 
+      },
+      error: (err) => {
+        console.error('Error en login:', err);
+        this.cargando = false;
+        this.mensajeError =
+          err.status === 401
+            ? 'Credenciales inválidas. Verifica tus datos.'
+            : 'Ocurrió un error al iniciar sesión.';
+      },
+    });
   }
 
   irARegistro() {

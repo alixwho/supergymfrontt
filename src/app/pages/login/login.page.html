@@ -6,56 +6,64 @@
     <p class="subtitle">Tu entrenador personal</p>
 
     <form [formGroup]="loginForm" (ngSubmit)="ingresar()">
+
+
       <ion-item lines="none" class="input-item">
         <ion-input
-          formControlName="correo"
-          type="email"
-          label="Correo electrónico"
+          formControlName="numero_usuario"
+          label="Número de usuario"
           labelPlacement="floating"
-          placeholder="ejemplo@correo.com"
+          placeholder="Ej. usuario123"
         ></ion-input>
       </ion-item>
 
-      @if (correo.invalid && (correo.dirty || correo.touched)) {
+      @if (numero_usuario.invalid && (numero_usuario.dirty || numero_usuario.touched)) {
         <ion-text color="danger">
-          @if (correo.errors?.['required']) {
-            <p>El correo es obligatorio</p>
-          }
-          @if (correo.errors?.['email']) {
-            <p>El formato del correo no es válido</p>
+          @if (numero_usuario.errors?.['required']) {
+            <p>El número de usuario es obligatorio</p>
           }
         </ion-text>
       }
 
       <ion-item lines="none" class="input-item">
         <ion-input
-          formControlName="contrasena"
-          type="password"
+          [type]="mostrarPassword ? 'text' : 'password'"
+          formControlName="password"
           label="Contraseña"
           labelPlacement="floating"
           placeholder="Ingresa tu contraseña"
         ></ion-input>
+        <ion-icon
+          slot="end"
+          [name]="mostrarPassword ? 'eye-off' : 'eye'"
+          class="icono-ojo"
+          (click)="mostrarPassword = !mostrarPassword"
+        ></ion-icon>
       </ion-item>
 
-      @if (contrasena.invalid && (contrasena.dirty || contrasena.touched)) {
+      @if (password.invalid && (password.dirty || password.touched)) {
         <ion-text color="danger">
-          @if (contrasena.errors?.['required']) {
+          @if (password.errors?.['required']) {
             <p>La contraseña es obligatoria</p>
           }
-          @if (contrasena.errors?.['minlength']) {
+          @if (password.errors?.['minlength']) {
             <p>Debe tener al menos 6 caracteres</p>
           }
         </ion-text>
       }
+
+      <ion-text color="danger" *ngIf="mensajeError">
+        <p>{{ mensajeError }}</p>
+      </ion-text>
 
       <ion-button
         expand="block"
         class="login-button"
         shape="round"
         type="submit"
-        [disabled]="loginForm.invalid"
+        [disabled]="cargando || loginForm.invalid"
       >
-        Iniciar sesión
+        {{ cargando ? 'Iniciando sesión...' : 'Iniciar sesión' }}
       </ion-button>
     </form>
 

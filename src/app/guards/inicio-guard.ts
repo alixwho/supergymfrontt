@@ -10,9 +10,10 @@ export class InicioGuard implements CanActivate {
   constructor(private router: Router) {}
 
   canActivate(): boolean {
-    const usuario = localStorage.getItem('usuario');
+    const token = localStorage.getItem('token');
 
-    if (!usuario) {
+    if (!token) {
+
       this.router.navigate(['/login']);
       return false;
     }

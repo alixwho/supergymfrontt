@@ -7,70 +7,84 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-
-  <form [formGroup]="formRegistro" (ngSubmit)="registrar()">
+<ion-content [fullscreen]="true">
+  <form [formGroup]="formRegistro" (ngSubmit)="registrar()" class="ion-padding">
 
     <ion-item>
-      <ion-label position="floating">Nombre completo</ion-label>
-      <ion-input formControlName="nombre"></ion-input>
+      <ion-label position="stacked">Número de usuario</ion-label>
+      <ion-input formControlName="numero_usuario" placeholder="Ej. usuario123"></ion-input>
     </ion-item>
-    @if (formRegistro.get('nombre')?.invalid && formRegistro.get('nombre')?.touched) {
-      <ion-text color="danger">El nombre es obligatorio</ion-text>
+    @if (formRegistro.get('numero_usuario')?.touched && formRegistro.get('numero_usuario')?.hasError('required')) {
+      <p class="error">Este campo es obligatorio.</p>
     }
 
     <ion-item>
-      <ion-label position="floating">Correo electrónico</ion-label>
-      <ion-input type="email" formControlName="correo"></ion-input>
+      <ion-label position="stacked">Nombre completo</ion-label>
+      <ion-input formControlName="name" placeholder="Tu nombre"></ion-input>
     </ion-item>
-    @if (formRegistro.get('correo')?.invalid && formRegistro.get('correo')?.touched) {
-      <ion-text color="danger">Ingresa un correo válido</ion-text>
+    @if (formRegistro.get('name')?.touched && formRegistro.get('name')?.hasError('required')) {
+      <p class="error">El nombre es obligatorio.</p>
     }
 
-    <!-- Aquí agregué lo del ojo para que el usuario vea de que escribe y tambien para ver si coinciden las contraseñas -->
     <ion-item>
-      <ion-label position="floating">Contraseña</ion-label>
+      <ion-label position="stacked">Correo electrónico</ion-label>
+      <ion-input formControlName="email" placeholder="tucorreo@email.com" type="email"></ion-input>
+    </ion-item>
+    @if (formRegistro.get('email')?.touched && formRegistro.get('email')?.hasError('required')) {
+      <p class="error">El correo es obligatorio.</p>
+    }
+    @if (formRegistro.get('email')?.touched && formRegistro.get('email')?.hasError('email')) {
+      <p class="error">Ingresa un correo válido.</p>
+    }
+
+    <ion-item>
+      <ion-label position="stacked">Contraseña</ion-label>
       <ion-input
         [type]="mostrarContrasena ? 'text' : 'password'"
-        formControlName="contrasena">
+        formControlName="password"
+        placeholder="••••••••">
       </ion-input>
       <ion-icon
-        [name]="mostrarContrasena ? 'eye-off-outline' : 'eye-outline'"
         slot="end"
-        (click)="cambiarVisibilidadContrasena()"
-        class="icono-ojo">
+        [name]="mostrarContrasena ? 'eye-off' : 'eye'"
+        class="icono-ojo"
+        (click)="cambiarVisibilidadContrasena()">
       </ion-icon>
     </ion-item>
-    @if (formRegistro.get('contrasena')?.invalid && formRegistro.get('contrasena')?.touched) {
-      <ion-text color="danger">La contraseña debe tener al menos 6 caracteres</ion-text>
+    @if (formRegistro.get('password')?.touched && formRegistro.get('password')?.hasError('required')) {
+      <p class="error">La contraseña es obligatoria.</p>
+    }
+    @if (formRegistro.get('password')?.touched && formRegistro.get('password')?.hasError('minlength')) {
+      <p class="error">Debe tener al menos 6 caracteres.</p>
     }
 
-    <!-- Confirmar contra -->
     <ion-item>
-      <ion-label position="floating">Confirmar contraseña</ion-label>
+      <ion-label position="stacked">Confirmar contraseña</ion-label>
       <ion-input
         [type]="mostrarConfirmar ? 'text' : 'password'"
-        formControlName="confirmarContrasena">
+        formControlName="confirmarPassword"
+        placeholder="••••••••">
       </ion-input>
       <ion-icon
-        [name]="mostrarConfirmar ? 'eye-off-outline' : 'eye-outline'"
         slot="end"
-        (click)="cambiarVisibilidadConfirmacion()"
-        class="icono-ojo">
+        [name]="mostrarConfirmar ? 'eye-off' : 'eye'"
+        class="icono-ojo"
+        (click)="cambiarVisibilidadConfirmacion()">
       </ion-icon>
     </ion-item>
-    @if (formRegistro.hasError('noCoinciden') && formRegistro.get('confirmarContrasena')?.touched) {
-      <ion-text color="danger">Las contraseñas no coinciden</ion-text>
+    
+    @if (formRegistro.errors?.['noCoinciden'] && formRegistro.get('confirmarPassword')?.touched) {
+      <p class="error">Las contraseñas no coinciden.</p>
     }
 
     <ion-item>
-      <ion-label position="floating">Edad</ion-label>
-      <ion-input type="number" formControlName="edad"></ion-input>
+      <ion-label position="stacked">Edad</ion-label>
+      <ion-input type="number" formControlName="edad" placeholder="25"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label>Género</ion-label>
-      <ion-select formControlName="genero" placeholder="Seleccionar">
+      <ion-label position="stacked">Género</ion-label>
+      <ion-select formControlName="sexo" placeholder="Seleccionar">
         <ion-select-option value="masculino">Masculino</ion-select-option>
         <ion-select-option value="femenino">Femenino</ion-select-option>
         <ion-select-option value="otro">Otro</ion-select-option>
@@ -79,29 +93,42 @@
 
     <div class="peso-altura">
       <ion-item>
-        <ion-label position="floating">Peso (kg)</ion-label>
-        <ion-input type="number" formControlName="peso"></ion-input>
+        <ion-label position="stacked">Peso (kg)</ion-label>
+        <ion-input type="number" formControlName="peso" placeholder="70"></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-label position="floating">Altura (cm)</ion-label>
-        <ion-input type="number" formControlName="altura"></ion-input>
+        <ion-label position="stacked">Altura (cm)</ion-label>
+        <ion-input type="number" formControlName="altura" placeholder="175"></ion-input>
       </ion-item>
     </div>
 
     <ion-item>
-      <ion-label>Nivel de conocimiento</ion-label>
-      <ion-select formControlName="nivel" placeholder="Seleccionar">
-        <ion-select-option value="principiante">Principiante</ion-select-option>
-        <ion-select-option value="intermedio">Intermedio</ion-select-option>
-        <ion-select-option value="avanzado">Avanzado</ion-select-option>
+      <ion-label position="stacked">Nivel de conocimiento</ion-label>
+      <ion-select formControlName="nivel_conocimiento" placeholder="Seleccionar">
+        <ion-select-option value="Principiante">Principiante</ion-select-option>
+        <ion-select-option value="Intermedio">Intermedio</ion-select-option>
+        <ion-select-option value="Avanzado">Avanzado</ion-select-option>
       </ion-select>
     </ion-item>
 
-    <ion-button expand="block" class="register-btn" type="submit" [disabled]="formRegistro.invalid">
-      Registrarse
+    <ion-item>
+      <ion-label position="stacked">Objetivo</ion-label>
+      <ion-input formControlName="objetivo" placeholder="Bajar de peso, ganar masa..."></ion-input>
+    </ion-item>
+
+
+    <ion-item style="display: none;">
+      <ion-label position="stacked">Tipo de usuario</ion-label>
+      <ion-input formControlName="tipo_usuario" value="Registrado"></ion-input>
+    </ion-item>
+
+    <ion-button
+      expand="block"
+      class="register-btn"
+      [disabled]="cargando || formRegistro.invalid"
+      type="submit">
+      {{ cargando ? 'Registrando...' : 'Registrarse' }}
     </ion-button>
-
   </form>
-
 </ion-content>
