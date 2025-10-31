@@ -1,24 +1,30 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="light">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/listaejer"></ion-back-button>
+    </ion-buttons>
     <ion-title>{{ ejercicio.nombre }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
-  <p>{{ ejercicio.descripcion }}</p>
-  <p>Repeticiones/Cuentas: {{ ejercicio.repeticiones }}</p>
+  <div class="detalle-card">
+    <h2 class="titulo">{{ ejercicio.nombre }}</h2>
+    <p class="descripcion">{{ ejercicio.descripcion }}</p>
+    <p class="repeticiones">Repeticiones/Cuentas: {{ ejercicio.repeticiones }}</p>
 
-  <!-- Video o GIF -->
-  <ng-container *ngIf="ejercicio.video">
-    <video *ngIf="ejercicio.video.endsWith('.mp4')" width="100%" controls>
-      <source [src]="ejercicio.video" type="video/mp4">
-    </video>
-    <img *ngIf="ejercicio.video.endsWith('.gif')" [src]="ejercicio.video" width="100%">
-  </ng-container>
+    <div class="video-container" *ngIf="ejercicio.video">
+      <video *ngIf="ejercicio.video.endsWith('.mp4')" width="100%" controls>
+        <source [src]="ejercicio.video" type="video/mp4">
+      </video>
+      <img *ngIf="ejercicio.video.endsWith('.gif')" [src]="ejercicio.video" width="100%">
+    </div>
 
-  <!-- Toggle switch personalizado -->
-  <label class="switch">
-    <input type="checkbox" [checked]="ejercicio.completado" (change)="toggleCompletado()">
-    <span class="slider"></span>
-  </label>
+    <div class="toggle-container">
+      <label class="switch">
+        <input type="checkbox" [checked]="ejercicio.completado" (change)="toggleCompletado()">
+        <span class="slider"></span>
+      </label>
+    </div>
+  </div>
 </ion-content>
