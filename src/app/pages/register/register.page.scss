@@ -7,13 +7,33 @@ ion-toolbar {
 
 ion-content {
   --background: #fff;
+  padding: 16px;
 }
 
-ion-item {
-  --highlight-color-focused: #1a73e8;
-  border-radius: 8px;
-  margin-bottom: 12px;
+ion-input {
+  --background: #f9f9f9;
+  --color: #000;
+  border: 1px solid #dcdcdc;
+  border-radius: 10px;
+  margin-bottom: 14px;
+  --padding-start: 12px;
+  --inner-padding-end: 12px;
 }
+
+
+ion-input::part(native) {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+
+ion-input,
+ion-select,
+ion-datetime {
+  --background: transparent;
+  font-size: 15px;
+}
+
 
 .peso-altura {
   display: flex;
@@ -28,9 +48,10 @@ ion-item {
 .register-btn {
   --background: #2ecc71;
   --background-activated: #27ae60;
-  margin-top: 16px;
   border-radius: 10px;
   font-weight: 600;
+  margin-top: 16px;
+  height: 48px;
 }
 
 .icono-ojo {
@@ -38,6 +59,7 @@ ion-item {
   cursor: pointer;
   margin-left: 8px;
 }
+
 
 .error {
   color: #e74c3c;

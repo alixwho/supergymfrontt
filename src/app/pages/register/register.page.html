@@ -10,7 +10,7 @@
 <ion-content [fullscreen]="true">
   <form [formGroup]="formRegistro" (ngSubmit)="registrar()" class="ion-padding">
 
-    <ion-item>
+    <ion-item lines="none">
       <ion-label position="stacked">Número de usuario</ion-label>
       <ion-input formControlName="numero_usuario" placeholder="Ej. usuario123"></ion-input>
     </ion-item>
@@ -18,7 +18,7 @@
       <p class="error">Este campo es obligatorio.</p>
     }
 
-    <ion-item>
+    <ion-item lines="none">
       <ion-label position="stacked">Nombre completo</ion-label>
       <ion-input formControlName="name" placeholder="Tu nombre"></ion-input>
     </ion-item>
@@ -26,7 +26,7 @@
       <p class="error">El nombre es obligatorio.</p>
     }
 
-    <ion-item>
+    <ion-item lines="none">
       <ion-label position="stacked">Correo electrónico</ion-label>
       <ion-input formControlName="email" placeholder="tucorreo@email.com" type="email"></ion-input>
     </ion-item>
@@ -37,7 +37,7 @@
       <p class="error">Ingresa un correo válido.</p>
     }
 
-    <ion-item>
+    <ion-item lines="none">
       <ion-label position="stacked">Contraseña</ion-label>
       <ion-input
         [type]="mostrarContrasena ? 'text' : 'password'"
@@ -58,7 +58,7 @@
       <p class="error">Debe tener al menos 6 caracteres.</p>
     }
 
-    <ion-item>
+    <ion-item lines="none">
       <ion-label position="stacked">Confirmar contraseña</ion-label>
       <ion-input
         [type]="mostrarConfirmar ? 'text' : 'password'"
@@ -77,12 +77,12 @@
       <p class="error">Las contraseñas no coinciden.</p>
     }
 
-    <ion-item>
+    <ion-item lines="none">
       <ion-label position="stacked">Edad</ion-label>
       <ion-input type="number" formControlName="edad" placeholder="25"></ion-input>
     </ion-item>
 
-    <ion-item>
+    <ion-item lines="none">
       <ion-label position="stacked">Género</ion-label>
       <ion-select formControlName="sexo" placeholder="Seleccionar">
         <ion-select-option value="masculino">Masculino</ion-select-option>
@@ -92,18 +92,18 @@
     </ion-item>
 
     <div class="peso-altura">
-      <ion-item>
+      <ion-item lines="none">
         <ion-label position="stacked">Peso (kg)</ion-label>
         <ion-input type="number" formControlName="peso" placeholder="70"></ion-input>
       </ion-item>
 
-      <ion-item>
+      <ion-item lines="none">
         <ion-label position="stacked">Altura (cm)</ion-label>
         <ion-input type="number" formControlName="altura" placeholder="175"></ion-input>
       </ion-item>
     </div>
 
-    <ion-item>
+    <ion-item lines="none">
       <ion-label position="stacked">Nivel de conocimiento</ion-label>
       <ion-select formControlName="nivel_conocimiento" placeholder="Seleccionar">
         <ion-select-option value="Principiante">Principiante</ion-select-option>
@@ -112,13 +112,12 @@
       </ion-select>
     </ion-item>
 
-    <ion-item>
+    <ion-item lines="none">
       <ion-label position="stacked">Objetivo</ion-label>
       <ion-input formControlName="objetivo" placeholder="Bajar de peso, ganar masa..."></ion-input>
     </ion-item>
 
-
-    <ion-item style="display: none;">
+    <ion-item lines="none" style="display: none;">
       <ion-label position="stacked">Tipo de usuario</ion-label>
       <ion-input formControlName="tipo_usuario" value="Registrado"></ion-input>
     </ion-item>

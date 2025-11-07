@@ -53,20 +53,23 @@ export class AuthService {
     });
   }
 
-  // Cerrar sesión
+
   logout(): Observable<any> {
     return this.http.post(`${this.API_URL}/logout`, {}, {
       headers: this.getAuthHeaders()
-    });
+    }).pipe(
+      tap(() => {
+        this.clearSession();  
+      })
+    );
   }
 
-  // Limpiar sesión local
   clearSession() {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
   }
 
-  // Verifica si hay sesión activa 
+
   isLoggedIn(): boolean {
     return !!localStorage.getItem('token');
   }
