@@ -27,6 +27,10 @@ const routes: Routes = [
     path: 'terminarejer',
     loadChildren: () => import('./terminarejer/terminarejer.module').then( m => m.TerminarejerPageModule)
   },
+  {
+    path: 'terminodedia',
+    loadChildren: () => import('./terminodedia/terminodedia.module').then( m => m.TerminodediaPageModule)
+  },
 ];
 
 @NgModule({
