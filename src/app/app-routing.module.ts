@@ -12,6 +12,23 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
+    path: 'perfil',
+    loadChildren: () => import('./pages/perfil/perfil.module').then( m => m.PerfilPageModule)
+  },
+  {
+    path: 'retos',
+    loadChildren: () => import('./pages/retos/retos.module').then( m => m.RetosPageModule)
+  },
+  {
+    path: 'notificaciones',
+    loadChildren: () => import('./pages/notificaciones/notificaciones.module').then( m => m.NotificacionesPageModule)
+  },
+  {
+    path: 'admin',
+    loadChildren: () => import('./pages/admin/admin.module').then( m => m.AdminPageModule)
+  },
+<<<<<<< HEAD
+  {
     path: 'graf',
     loadChildren: () => import('./graf/graf.module').then( m => m.GrafPageModule)
   },
@@ -31,6 +48,10 @@ const routes: Routes = [
     path: 'terminodedia',
     loadChildren: () => import('./terminodedia/terminodedia.module').then( m => m.TerminodediaPageModule)
   },
+];
+=======
+>>>>>>> ramaAnnuar
+
 ];
 
 @NgModule({

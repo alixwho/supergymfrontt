@@ -1,0 +1,93 @@
+<ion-header translucent="true">
+  <ion-toolbar class="notif-toolbar center-title ">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Notificaciones</ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon name="chevron-down-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="notif-content">
+  <div class="page-wrap">
+    <ion-list lines="none" class="notif-list">
+
+      <!-- Logro desbloqueado -->
+      <ion-item class="notif-item success">
+        <div class="side-line"></div>
+        <div class="icon-wrap">
+          <ion-icon name="trophy-outline"></ion-icon>
+        </div>
+        <ion-label>
+          <h3>¡Logro desbloqueado!</h3>
+          <p>Has completado 10 entrenamientos consecutivos</p>
+          <small>Hace 2 horas</small>
+        </ion-label>
+        <div class="dot"></div>
+      </ion-item>
+
+      <!-- Recordatorio -->
+      <ion-item class="notif-item info">
+        <div class="side-line"></div>
+        <div class="icon-wrap">
+          <ion-icon name="alarm-outline"></ion-icon>
+        </div>
+        <ion-label>
+          <h3>Recordatorio de entrenamiento</h3>
+          <p>Es hora de tu rutina de piernas programada</p>
+          <small>Hace 5 horas</small>
+        </ion-label>
+        <div class="dot"></div>
+      </ion-item>
+
+      <!-- Reto en riesgo -->
+      <ion-item class="notif-item warn">
+        <div class="side-line"></div>
+        <div class="icon-wrap">
+          <ion-icon name="alert-circle-outline"></ion-icon>
+        </div>
+        <ion-label>
+          <h3>Reto en riesgo</h3>
+          <p>No has entrenado en 2 días. ¡No pierdas tu racha!</p>
+          <small>Ayer</small>
+        </ion-label>
+        <div class="dot"></div>
+      </ion-item>
+
+      <!-- Nueva rutina disponible -->
+      <ion-item class="notif-item info">
+        <div class="side-line"></div>
+        <div class="icon-wrap">
+          <ion-icon name="information-circle-outline"></ion-icon>
+        </div>
+        <ion-label>
+          <h3>Nueva rutina disponible</h3>
+          <p>Hemos añadido una nueva rutina de yoga para principiantes</p>
+          <small>Hace 1 día</small>
+        </ion-label>
+        <div class="dot"></div>
+      </ion-item>
+
+      <!-- Meta alcanzada -->
+      <ion-item class="notif-item success">
+        <div class="side-line"></div>
+        <div class="icon-wrap">
+          <ion-icon name="medal-outline"></ion-icon>
+        </div>
+        <ion-label>
+          <h3>Meta alcanzada</h3>
+          <p>Has quemado 2000 calorías esta semana</p>
+          <small>Hace 2 días</small>
+        </ion-label>
+        <div class="dot"></div>
+      </ion-item>
+
+    </ion-list>
+
+    <div style="height:12px"></div>
+  </div>
+</ion-content>

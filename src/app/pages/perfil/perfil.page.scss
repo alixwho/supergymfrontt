@@ -1,0 +1,114 @@
+:host {
+  --primary-start:#2a74ff; --primary-end:#2366f0;
+  --panel-bg:#fff; --text-strong:#1b1b1b; --text-muted:#8a8f98;
+  --success:#2ac769; --danger:#ff4d4f; --shadow:0 10px 24px rgba(0,0,0,.08);
+
+}
+
+/* === Layout “bonito” en PC: columna centrada tipo teléfono === */
+.page-wrap {
+  width: 100%;
+  max-width: 420px;   /* ancho visual como en el mockup */
+  margin: 0 auto;
+  padding: 0 16px;
+}
+ion-toolbar.center-title {
+  display: flex;
+  align-items: center;      /* centra verticalmente todo el contenido */
+  justify-content: center;  /* centra horizontalmente el título */
+
+  min-height: 56px;         /* altura estándar del toolbar */
+  position: relative;
+
+  ion-title {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%); /* centra exacto */
+    text-align: center;
+    width: auto;
+    font-weight: 600;
+  }
+
+  ion-buttons {
+    z-index: 2; /* asegura que los botones sigan clicables */
+  }
+}
+
+
+.perfil-header {
+  .toolbar-transparent { --background: transparent; --color:#fff; }
+
+  .hero{
+    position: relative;
+    padding: 22px 0 68px;
+    background: linear-gradient(165deg,var(--primary-start),var(--primary-end));
+    border-bottom-left-radius: 24px; border-bottom-right-radius: 24px;
+
+    .avatar-wrap{
+      margin: 6px auto 0; width: 110px; height: 110px;
+      border-radius: 999px; background:#fff; display:grid; place-items:center;
+      box-shadow: var(--shadow);
+      img{ width:96px; height:96px; border-radius:999px; object-fit:cover; }
+    }
+
+    .stats-card{
+      position: absolute; left: 0; right: 0; bottom: -48px;
+      margin: 0 auto; width: calc(100% - 32px);
+      max-width: 420px; border-radius: 16px; box-shadow: var(--shadow);
+
+      ion-card-content{ padding: 14px 10px; }
+      .stats-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:2px; text-align:center; }
+      .stat-num{ font-weight:800; font-size:22px; color:var(--text-strong); line-height:1;
+        &.pro{ color:#1db954; }
+      }
+      .stat-label{ margin-top:4px; font-size:12px; color:var(--text-muted); }
+    }
+  }
+}
+
+.perfil-content{
+  --padding-top: 70px; background:#f6f7fb;
+
+  .panel{ border-radius:16px; box-shadow:var(--shadow); margin: 0 0 14px; background:var(--panel-bg);
+    ion-card-title{ font-size:18px; font-weight:800; color:var(--text-strong); }
+  }
+
+  /* === Gráfica fija/pequeña === */
+  .chart-box{
+    position: relative;
+    width: 100%;
+    max-width: 320px;   /* controla el ancho visual */
+    height: 110px;      /* altura fija como en la imagen */
+    margin: 0 auto;     /* centrada */
+    canvas{
+      width: 100% !important;
+      height: 100% !important;
+      display: block;
+    }
+  }
+
+  .chart-weeks{
+    display:grid; grid-template-columns:repeat(4,1fr);
+    margin: 6px auto 0; max-width: 320px;
+    font-size:12px; color:var(--text-muted); text-align:center;
+  }
+
+  .routine-list ion-item{
+    --background: transparent; --padding-start:0; --inner-padding-end:0;
+    align-items:center;
+    .dot{ width:10px; height:10px; border-radius:999px; margin-right:10px;
+      &.ok{ background:var(--success); } &.bad{ background:var(--danger); }
+    }
+    ion-label h3{ font-weight:700; color:var(--text-strong); }
+    .right-time{ margin-left:auto; color:var(--text-muted); font-size:13px; }
+  }
+
+  .btn-wrap{ margin:12px 0 0; }
+  .btn-editar{ --background:#1d66ff; --background-activated:#1758da; --border-radius:14px; height:48px; font-weight:700; }
+}
+
+/* En pantallas muy grandes, mantén el “teléfono” centrado */
+@media (min-width: 992px){
+  ion-content, .perfil-header .hero{ display:block; }
+}

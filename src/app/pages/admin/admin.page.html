@@ -1,0 +1,84 @@
+<ion-header translucent="true">
+  <ion-toolbar class="admin-toolbar center-title">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Administración</ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon name="person-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="admin-content">
+  <div class="page-wrap">
+
+    <!-- Crear Rutina -->
+    <div class="new-routine">
+      <div class="icon-circle">
+        <ion-icon name="add-outline"></ion-icon>
+      </div>
+      <div class="label">Crear Rutina</div>
+    </div>
+
+    <!-- Actividades recientes -->
+    <div class="section-title">Actividades Recientes</div>
+    <ion-list lines="none" class="recent-list">
+      <ion-item class="recent-item create">
+        <div class="bullet"></div>
+        <ion-icon name="add-outline"></ion-icon>
+        <ion-label>
+          <h3>Rutina "HIIT Avanzado" creada</h3>
+          <small>Hace 2 horas</small>
+        </ion-label>
+      </ion-item>
+
+      <ion-item class="recent-item edit">
+        <div class="bullet"></div>
+        <ion-icon name="create-outline"></ion-icon>
+        <ion-label>
+          <h3>Rutina "Yoga Matutino" editada</h3>
+          <small>Hace 5 horas</small>
+        </ion-label>
+      </ion-item>
+
+      <ion-item class="recent-item upload">
+        <div class="bullet"></div>
+        <ion-icon name="cloud-upload-outline"></ion-icon>
+        <ion-label>
+          <h3>Video "Sentadillas" subido</h3>
+          <small>Ayer</small>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+
+    <!-- Estadísticas -->
+    <div class="section-title">Estadísticas</div>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-num">{{ stats.rutinas }}</div>
+        <div class="stat-label">Rutinas</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">{{ stats.ejercicios }}</div>
+        <div class="stat-label">Ejercicios</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">{{ stats.videos }}</div>
+        <div class="stat-label">Videos</div>
+      </div>
+    </div>
+
+    <!-- Botones -->
+    <ion-button expand="block" class="btn-primary" (click)="gestionarUsuarios()">
+      Gestionar Usuarios
+    </ion-button>
+    <ion-button expand="block" class="btn-success" (click)="verReportes()">
+      Ver Reportes
+    </ion-button>
+
+    <div style="height:16px"></div>
+  </div>
+</ion-content>

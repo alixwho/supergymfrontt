@@ -1,0 +1,90 @@
+:host{
+  --success:#2ac769; --info:#2a74ff; --warn:#ff7a00;
+  --bg:#f6f7fb; --card:#fff; --text:#1b1b1b; --muted:#8a8f98;
+  --shadow:0 10px 24px rgba(0,0,0,.08);
+}
+
+/* “Teléfono” centrado en escritorio */
+.page-wrap{ max-width:420px; margin:0 auto; padding: 8px 16px 0; }
+
+/* Toolbar */
+.notif-toolbar {
+  --background: #1c1c1c00; /* transparente o el color que tengas */
+  --color: #ffffff;        /* color de texto e íconos */
+  color: #ffffff;
+  position: relative;
+}
+
+.notif-toolbar.center-title ion-title {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: auto;
+  font-weight: 800;
+  color: #ffffff;          /* asegúrate de mantener blanco aquí también */
+  pointer-events: none;
+}
+
+.notif-toolbar ion-icon,
+.notif-toolbar ion-back-button,
+.notif-toolbar ion-button {
+  color: #ffffff !important; /* fuerza el color blanco en los íconos */
+}
+
+.notif-content{ --background: var(--bg); }
+
+/* Lista */
+.notif-list{ display:grid; gap:12px; }
+
+/* Ítem tipo tarjeta */
+.notif-item{
+  --background: var(--card);
+  border-radius:16px; box-shadow: var(--shadow);
+  padding-inline-start: 0; /* eliminamos padding para alinear side-line */
+  align-items: stretch; /* para que side-line cubra toda la altura */
+
+  .side-line{
+    width:4px; border-radius: 16px 0 0 16px; margin-right: 12px;
+  }
+
+  .icon-wrap{
+    width:36px; height:36px; min-width:36px;
+    border-radius: 12px; display:grid; place-items:center;
+    margin-right:12px; background:#f1f5ff;
+    ion-icon{ font-size:20px; }
+  }
+
+  ion-label{
+    margin: 8px 8px 8px 0;
+    h3{ margin:0 0 4px; font-weight:800; color: var(--text);}
+    p{ margin:0; color: var(--text); opacity:.9; }
+    small{ display:block; color: var(--muted); margin-top:6px; }
+  }
+
+  .dot{
+    width:8px; height:8px; border-radius:999px; align-self:center; margin-left:8px;
+    background:#12d24a22; /* se sobrescribe por tipo */
+  }
+}
+
+/* Colores por tipo */
+.notif-item.success{
+  .side-line{ background: var(--success); }
+  .icon-wrap{ background: #eafaf1; color: var(--success); }
+  .dot{ background: var(--success); }
+}
+.notif-item.info{
+  .side-line{ background: var(--info); }
+  .icon-wrap{ background: #eef4ff; color: var(--info); }
+  .dot{ background: var(--info); }
+}
+.notif-item.warn{
+  .side-line{ background: var(--warn); }
+  .icon-wrap{ background: #fff1e6; color: var(--warn); }
+  .dot{ background: var(--warn); }
+}
+
+/* Fijamos modo claro como en mockup */
+:host{ color-scheme: light only; }
